@@ -197,6 +197,32 @@
             z-index: 3;
         }
 
+        /* Botón de iniciar sesión */
+        .login-btn {
+            position: absolute;
+            top: 30px; /* Mueve el botón hacia la parte superior */
+            right: 30px; /* Mueve el botón hacia la parte derecha */
+            padding: 10px 20px;
+            background-color: #d8b56f;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .login-btn:hover {
+            background-color: #d8b56f;
+        }
+
+        /* Estilo para la sección del usuario */
+        .user-info {
+            font-size: 18px;
+            color: black;
+            text-align: center;
+        }
     </style>
     <link href="https://fonts.cdnfonts.com/css/gagalin" rel="stylesheet">
 </head>
@@ -224,14 +250,20 @@
         <div class="coins-text">Cuenta</div>
     </div>
 
+    <!-- Botón de iniciar sesión -->
+    <a href="https://discord.com/login" class="login-btn" target="_blank">INICIAR SESIÓN</a>
+
     <!-- Cuadro mostaza -->
     <div class="mustard-box" id="mustard-box">
         TODA LA INFORMACION DE TU CUENTA AQUI 👇
+        <div id="user-info" class="user-info">
+            <!-- Información de usuario aquí -->
+        </div>
     </div>
 
     <!-- Segundo cuadro mostaza -->
     <div class="second-mustard-box" id="second-mustard-box">
-        XD
+        <!-- Aquí se mostrará la información del usuario después del inicio de sesión -->
     </div>
 
     <script>
@@ -241,6 +273,7 @@
         const coinsBtn = document.getElementById('coins-btn');
         const mustardBox = document.getElementById('mustard-box');
         const secondMustardBox = document.getElementById('second-mustard-box');
+        const userInfoDiv = document.getElementById('user-info');
 
         coinsBtn.addEventListener('click', function () {
             centerImage.style.display = 'none';
@@ -255,6 +288,10 @@
             mustardBox.style.display = 'none';
             secondMustardBox.style.display = 'none';
         });
+
+        // Aquí se puede agregar la lógica para mostrar la información del usuario después de iniciar sesión
+        // Por ejemplo, una vez que el usuario inicia sesión con Discord, puedes obtener su información
+        // y mostrarla en la sección correspondiente.
     </script>
 </body>
 </html>
