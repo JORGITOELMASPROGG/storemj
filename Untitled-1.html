@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Mj</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+            font-family: 'Gagalin', sans-serif;
+            overflow-y: auto;
+        }
+
+        /* Fondo de video */
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Logo en la parte izquierda */
+        .logo-left {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            z-index: 1;
+        }
+        .logo-left img {
+            width: 200px;
+            height: auto;
+        }
+
+        /* Imagen en el centro superior */
+        .center-image {
+            position: absolute;
+            top: 50px;
+            left: 55%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        .center-image img {
+            width: 250px;
+            height: auto;
+        }
+
+        /* Rectángulo mostaza a la izquierda */
+        .mustard-rectangle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 800px;
+            background-color: #d8b56f;
+            z-index: 0;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 60px 30px 0px;
+        }
+
+        /* Imagen y texto "SERVICIOS" alineados */
+        .service-container {
+            display: flex;
+            align-items: center;
+            margin-top: 120px;
+            margin-left: -10px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .service-icon {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .store-text {
+            font-size: 20px;
+            color: white;
+            text-shadow: 0 0 10px rgba(199, 156, 17, 0.7);
+            white-space: nowrap;
+        }
+
+        /* Contenedor "Cuenta" con ícono */
+        .coins-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 220px;
+            left: 20px;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .coins-container img {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .coins-text {
+            font-size: 20px;
+            color: white;
+            text-shadow: 0 0 10px rgba(199, 156, 17, 0.7);
+        }
+
+        /* Cuadro blanco que aparecerá debajo de la imagen central */
+        .white-box {
+            margin-top: 200px;
+            margin-left: -300px;
+            padding: 20px;
+            background-color: white;
+            color: black;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Imagen encima del texto en el cuadro blanco */
+        .white-box img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        /* Cuadro verde debajo del texto "COMPRAR" */
+        .buy-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .buy-box:hover {
+            background-color: #218838;
+        }
+
+        /* Cuadro mostaza que aparece al hacer clic en "Cuenta" */
+        .mustard-box {
+            position: absolute;
+            top: 80px;
+            left: 40%;
+            transform: translateX(-50%);
+            padding: 30px;
+            background-color: #d8b56f;
+            color: black;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            display: none; /* Oculto por defecto */
+            z-index: 3;
+        }
+
+        /* Segundo cuadro mostaza */
+        .second-mustard-box {
+            position: absolute;
+            top: 200px;
+            left: 40%;
+            transform: translateX(-50%);
+            padding: 30px;
+            background-color: #d8b56f;
+            color: black;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            display: none; /* Oculto por defecto */
+            z-index: 3;
+        }
+
+    </style>
+    <link href="https://fonts.cdnfonts.com/css/gagalin" rel="stylesheet">
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="https://i.imgur.com/4w6PpSz.mp4" type="video/mp4">
+    </video>
+
+    <!-- Logo, rectángulos e información -->
+    <div class="logo-left"><img src="https://i.imgur.com/KUhw9mM.png" alt="Logo"></div>
+    <div class="center-image" id="center-image"><img src="https://i.imgur.com/N7k9Djp.png" alt="Imagen central"></div>
+    <div class="mustard-rectangle">
+        <a href="#" class="service-container" id="service-btn">
+            <img src="https://i.imgur.com/6thHGBs.png" alt="Icono servicios" class="service-icon">
+            <div class="store-text">SERVICIOS</div>
+        </a>
+    </div>
+    <div class="white-box" id="white-box">
+        <img src="https://i.imgur.com/DTQxbVN.png" alt="Imagen sobre el texto">
+        <div>¡Spotify! 3 meses por 35 soles.</div>
+        <a href="https://www.paypal.com/ncp/payment/22F2FLHEZNR6E" class="buy-box" target="_blank">COMPRAR</a>
+    </div>
+    <div class="coins-container" id="coins-btn">
+        <img src="https://i.imgur.com/xO9X32e.png" alt="Ícono de MJ Coins">
+        <div class="coins-text">Cuenta</div>
+    </div>
+
+    <!-- Cuadro mostaza -->
+    <div class="mustard-box" id="mustard-box">
+        TODA LA INFORMACION DE TU CUENTA AQUI 👇
+    </div>
+
+    <!-- Segundo cuadro mostaza -->
+    <div class="second-mustard-box" id="second-mustard-box">
+        XD
+    </div>
+
+    <script>
+        const centerImage = document.getElementById('center-image');
+        const whiteBox = document.getElementById('white-box');
+        const serviceBtn = document.getElementById('service-btn');
+        const coinsBtn = document.getElementById('coins-btn');
+        const mustardBox = document.getElementById('mustard-box');
+        const secondMustardBox = document.getElementById('second-mustard-box');
+
+        coinsBtn.addEventListener('click', function () {
+            centerImage.style.display = 'none';
+            whiteBox.style.display = 'none';
+            mustardBox.style.display = 'block';
+            secondMustardBox.style.display = 'block';
+        });
+
+        serviceBtn.addEventListener('click', function () {
+            centerImage.style.display = 'block';
+            whiteBox.style.display = 'flex';
+            mustardBox.style.display = 'none';
+            secondMustardBox.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
