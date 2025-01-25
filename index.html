@@ -468,7 +468,18 @@
             .then(response => response.json())
             .then(data => {
                 const avatarUrl = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
-                loginBtn.innerHTML = `<img src="${avatarUrl}" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%;">`;
+
+                // Cambiar el contenido de loginBtn por el avatar
+                loginBtn.style.display = 'none'; // Ocultar el botón de iniciar sesión
+                const avatarElement = document.createElement('img');
+                avatarElement.src = avatarUrl;
+                avatarElement.alt = 'Avatar';
+                avatarElement.style.width = '40px';
+                avatarElement.style.height = '40px';
+                avatarElement.style.borderRadius = '50%';
+
+                // Agregar el avatar al DOM
+                loginBtn.parentNode.appendChild(avatarElement);
 
                 // Mostrar el avatar y el nombre de usuario
                 userInfo.innerHTML = `
