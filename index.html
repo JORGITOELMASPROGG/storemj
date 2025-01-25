@@ -414,13 +414,13 @@
     
     // Función para manejar el clic en el botón "Cuenta"
     coinsBtn.addEventListener('click', function () {
-        // Oculta la imagen y muestra solo la caja de cuenta
+        // Oculta la imagen y muestra solo el cuadro de cuenta
         centerImage.style.display = 'none';
         whiteBoxContainer.style.visibility = 'hidden';
         mustardBox.style.display = 'none';
         whiteBoxBottom.style.visibility = 'hidden';
         
-        // Muestra la caja de cuenta con la información del usuario
+        // Muestra el cuadro de cuenta con la información del usuario
         const userAccountBox = document.createElement('div');
         userAccountBox.innerHTML = `
             <div style="font-size: 16px; font-weight: bold; color: #333;">¡CUENTA CONECTADA!</div>
@@ -450,13 +450,13 @@
             .then(data => {
                 const avatarUrl = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
 
-                // Actualizar la información del usuario en el cuadro
+                // Actualizar la información del usuario en el cuadro de cuenta
                 document.getElementById('user-name').textContent = data.username;
                 document.getElementById('user-id').textContent = data.id;
                 document.getElementById('user-email').textContent = data.email || 'No disponible';
                 document.getElementById('avatar-img').src = avatarUrl;
 
-                // Mostrar el cuadro de cuenta
+                // Mostrar el cuadro de cuenta solo en la sección de cuenta
                 mustardBox.style.display = 'block';
             })
             .catch(error => {
@@ -470,7 +470,7 @@
 
     // Función para manejar el clic en el botón "Servicios"
     serviceBtn.addEventListener('click', function () {
-        // Mostrar los elementos de la sección de "Servicios"
+        // Mostrar los elementos de la sección de "Servicios" y ocultar la caja de cuenta
         whiteBoxRight.style.visibility = 'visible';
         whiteBoxRight2.style.visibility = 'visible';
         buyBoxGreen.style.visibility = 'visible';
@@ -479,6 +479,20 @@
         buyBoxGreenBottom.style.visibility = 'visible';
 
         mustardBox.style.display = 'none'; // Ocultar la caja de cuenta
+    });
+
+    // Función para manejar el clic en el botón "Cuenta"
+    coinsBtn.addEventListener('click', function () {
+        // Mostrar solo la caja de cuenta y ocultar otros cuadros
+        mustardBox.style.display = 'block';
+        whiteBoxContainer.style.visibility = 'hidden';
+        whiteBox.style.visibility = 'hidden';
+        whiteBoxRight.style.visibility = 'hidden';
+        whiteBoxRight2.style.visibility = 'hidden';
+        buyBoxGreen.style.visibility = 'hidden';
+        buyBoxGreenRight.style.visibility = 'hidden';
+        buyBoxGreenRight2.style.visibility = 'hidden';
+        buyBoxGreenBottom.style.visibility = 'hidden';
     });
 </script>
 </body>
