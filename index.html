@@ -364,7 +364,7 @@
             <a href="https://www.paypal.com/ncp/payment/22F2FLHEZNR6E" class="buy-box-green" target="_blank">COMPRAR</a>
         </div>
 
-                <!-- Nuevo cuadro blanco a la derecha -->
+        <!-- Nuevo cuadro blanco a la derecha -->
         <div class="white-box-right" id="white-box-right">
             <img src="https://img.irroba.com.br/filters:fill(fff):quality(80)/estampar/catalog/painel-redondo-2023/painel-2024/painel-redondo-netflix.jpg" alt="Imagen sobre el texto">
             <div>¡NETFLIX! 1 MES POR 20 SOLES.</div>
@@ -393,156 +393,139 @@
         <div>¡CrunchyRoll! Ha tan solo 12 soles.</div>
         <a href="https://www.paypal.com/ncp/payment/6L9M2ZYWV33U8" class="buy-box-green-bottom" target="_blank">COMPRAR</a>
     </div>
-
-    <!-- Cuadro mostaza -->
-    <div class="mustard-box" id="mustard-box">
-        TODA LA INFORMACION DE TU CUENTA AQUI 👇
-        <div id="user-info" class="user-info">
-            <!-- Información de usuario aquí -->
-        </div>
-    </div>
-
+    
     <script>
-    // Referencias a los elementos
-    const centerImage = document.getElementById('center-image');
-    const whiteBoxContainer = document.getElementById('white-box-container');
-    const serviceBtn = document.getElementById('service-btn');
-    const coinsBtn = document.getElementById('coins-btn');
-    const mustardBox = document.getElementById('mustard-box');
-    const whiteBoxBottom = document.getElementById('white-box-bottom'); // Último cuadro añadido
-    const loginBtn = document.getElementById('login-btn');
-    const userInfo = document.getElementById('user-info');
-    const whiteBoxRight = document.getElementById('white-box-right');
-    const whiteBoxRight2 = document.getElementById('white-box-right-2');
-    const whiteBox = document.getElementById('white-box');
-    const buyBoxGreen = document.querySelector('.buy-box-green');
-    const buyBoxGreenRight = document.querySelector('.buy-box-green-right');
-    const buyBoxGreenRight2 = document.querySelector('.buy-box-green-right-2');
-    const buyBoxGreenBottom = document.querySelector('.buy-box-green-bottom');
-    const usernameDisplayContainer = document.getElementById('username-display-container');
-    const logoutBtn = document.getElementById('logout-btn');
-
-    // Función para manejar el clic en el botón "Cuenta"
-    coinsBtn.addEventListener('click', function () {
-        centerImage.style.display = 'none'; // Oculta el centro de la imagen
-        whiteBoxContainer.style.visibility = 'hidden'; // Oculta todos los cuadros blancos sin moverlos
-        mustardBox.style.display = 'block'; // Muestra el cuadro mostaza
-        whiteBoxBottom.style.visibility = 'hidden'; // Oculta el cuadro blanco inferior sin moverlo
-        // Oculta los cuadros de "Servicios" sin cambiar su tamaño
-        whiteBox.style.visibility = 'hidden';
-        whiteBoxRight.style.visibility = 'hidden';
-        whiteBoxRight2.style.visibility = 'hidden';
-        buyBoxGreen.style.visibility = 'hidden';
-        buyBoxGreenRight.style.visibility = 'hidden';
-        buyBoxGreenRight2.style.visibility = 'hidden';
-        buyBoxGreenBottom.style.visibility = 'hidden';
-    });
-
-    // Función para manejar el clic en el botón "Servicios"
-    serviceBtn.addEventListener('click', function () {
-        centerImage.style.display = 'block'; // Muestra el centro de la imagen
-        whiteBoxContainer.style.visibility = 'visible'; // Muestra todos los cuadros blancos sin cambiar el diseño
-        mustardBox.style.display = 'none'; // Oculta el cuadro mostaza
-        whiteBoxBottom.style.visibility = 'visible'; // Muestra el cuadro blanco inferior sin moverlo
-        // Muestra los cuadros de "Servicios" sin afectar el diseño de los botones de compra
-        whiteBox.style.visibility = 'visible';
-        whiteBoxRight.style.visibility = 'visible';
-        whiteBoxRight2.style.visibility = 'visible';
-        buyBoxGreen.style.visibility = 'visible';
-        buyBoxGreenRight.style.visibility = 'visible';
-        buyBoxGreenRight2.style.visibility = 'visible';
-        buyBoxGreenBottom.style.visibility = 'visible';
-    });
-
-    // Función para obtener el token de Discord y el avatar
-    function getDiscordUser() {
-        const accessToken = localStorage.getItem('discordToken'); // Recuperar el token desde el localStorage
-
-        if (accessToken) {
-            // Realiza la solicitud a la API de Discord para obtener el avatar
-            fetch('https://discord.com/api/v10/users/@me', {
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                const avatarUrl = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
-
-                // Cambiar el contenido de loginBtn por el avatar
-                loginBtn.style.display = 'none'; // Ocultar el botón de iniciar sesión
-                const avatarElement = document.createElement('img');
-                avatarElement.src = avatarUrl;
-                avatarElement.alt = 'Avatar';
-                avatarElement.style.width = '40px';
-                avatarElement.style.height = '40px';
-                avatarElement.style.borderRadius = '50%';
-
-                // Agregar el avatar al DOM
-                loginBtn.parentNode.appendChild(avatarElement);
-
-                // Mostrar el avatar y el nombre de usuario
-                userInfo.innerHTML = `
-                    <img id="avatar-img" src="${avatarUrl}" alt="Avatar de ${data.username}" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px; cursor: pointer;">
-                    <div id="username-display" style="display: none;">${data.username}</div>
-                    <button id="logout-btn" style="display: none;">Cerrar sesión</button>
-                `;
-                mustardBox.style.display = 'block';
-                whiteBoxContainer.style.display = 'flex';
-
-                // Mostrar el contenedor con la información del usuario
-                userInfo.style.display = 'block';
-
-                // Funcionalidad al hacer clic en el avatar
-                document.getElementById('avatar-img').addEventListener('click', function () {
-                    // Mostrar el nombre de usuario y el botón de cerrar sesión debajo del avatar
-                    usernameDisplayContainer.style.display = 'block';
-                    logoutBtn.style.display = 'block';
+        // Referencias a los elementos
+        const centerImage = document.getElementById('center-image');
+        const whiteBoxContainer = document.getElementById('white-box-container');
+        const serviceBtn = document.getElementById('service-btn');
+        const coinsBtn = document.getElementById('coins-btn');
+        const mustardBox = document.getElementById('mustard-box');
+        const whiteBoxBottom = document.getElementById('white-box-bottom'); // Último cuadro añadido
+        const loginBtn = document.getElementById('login-btn');
+        const userInfo = document.getElementById('user-info');
+        const whiteBoxRight = document.getElementById('white-box-right');
+        const whiteBoxRight2 = document.getElementById('white-box-right-2');
+        const whiteBox = document.getElementById('white-box');
+        const buyBoxGreen = document.querySelector('.buy-box-green');
+        const buyBoxGreenRight = document.querySelector('.buy-box-green-right');
+        const buyBoxGreenRight2 = document.querySelector('.buy-box-green-right-2');
+        const buyBoxGreenBottom = document.querySelector('.buy-box-green-bottom');
+    
+        // Función para manejar el clic en el botón "Cuenta"
+        coinsBtn.addEventListener('click', function () {
+            centerImage.style.display = 'none'; // Oculta el centro de la imagen
+            whiteBoxContainer.style.visibility = 'hidden'; // Oculta todos los cuadros blancos sin moverlos
+            mustardBox.style.display = 'block'; // Muestra el cuadro mostaza
+            whiteBoxBottom.style.visibility = 'hidden'; // Oculta el cuadro blanco inferior sin moverlo
+            // Oculta los cuadros de "Servicios" sin cambiar su tamaño
+            whiteBox.style.visibility = 'hidden';
+            whiteBoxRight.style.visibility = 'hidden';
+            whiteBoxRight2.style.visibility = 'hidden';
+            buyBoxGreen.style.visibility = 'hidden';
+            buyBoxGreenRight.style.visibility = 'hidden';
+            buyBoxGreenRight2.style.visibility = 'hidden';
+            buyBoxGreenBottom.style.visibility = 'hidden';
+        });
+    
+        // Función para manejar el clic en el botón "Servicios"
+        serviceBtn.addEventListener('click', function () {
+            centerImage.style.display = 'block'; // Muestra el centro de la imagen
+            whiteBoxContainer.style.visibility = 'visible'; // Muestra todos los cuadros blancos sin cambiar el diseño
+            mustardBox.style.display = 'none'; // Oculta el cuadro mostaza
+            whiteBoxBottom.style.visibility = 'visible'; // Muestra el cuadro blanco inferior sin moverlo
+            // Muestra los cuadros de "Servicios" sin afectar el diseño de los botones de compra
+            whiteBox.style.visibility = 'visible';
+            whiteBoxRight.style.visibility = 'visible';
+            whiteBoxRight2.style.visibility = 'visible';
+            buyBoxGreen.style.visibility = 'visible';
+            buyBoxGreenRight.style.visibility = 'visible';
+            buyBoxGreenRight2.style.visibility = 'visible';
+            buyBoxGreenBottom.style.visibility = 'visible';
+        });
+    
+        // Función para obtener el token de Discord y el avatar
+        function getDiscordUser() {
+            const urlParams = new URLSearchParams(window.location.hash.substring(1));
+            const accessToken = urlParams.get('access_token');
+    
+            if (accessToken) {
+                // Realiza la solicitud a la API de Discord para obtener el avatar
+                fetch('https://discord.com/api/v10/users/@me', {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const avatarUrl = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+                    loginBtn.innerHTML = `<img src="${avatarUrl}" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%;">`;
+    
+                    // Mostrar el avatar y el nombre de usuario
+                    userInfo.innerHTML = `
+                        <img id="avatar-img" src="${avatarUrl}" alt="Avatar de ${data.username}" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px; cursor: pointer;">
+                        <div id="username-display" style="display: none;">${data.username}</div>
+                        <button id="logout-btn" style="display: none;">Cerrar sesión</button>
+                    `;
+                    mustardBox.style.display = 'block';
+                    whiteBoxContainer.style.display = 'flex';
+    
+                    // Mostrar el contenedor con la información del usuario
+                    userInfo.style.display = 'block';
+    
+                    // Funcionalidad al hacer clic en el avatar
+                    document.getElementById('avatar-img').addEventListener('click', function () {
+                        const usernameDisplay = document.getElementById('username-display');
+                        const logoutBtn = document.getElementById('logout-btn');
+    
+                        // Mostrar el nombre de usuario y el botón de cerrar sesión
+                        usernameDisplay.style.display = 'block';
+                        logoutBtn.style.display = 'block';
+                    });
+    
+                    // Cerrar sesión al hacer clic en el botón
+                    document.getElementById('logout-btn').addEventListener('click', function () {
+                        localStorage.removeItem('discordToken'); // Eliminar el token
+                        window.location.href = window.location.origin; // Recargar la página
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener los datos del usuario:', error);
                 });
-
-                // Cerrar sesión al hacer clic en el botón
-                document.getElementById('logout-btn').addEventListener('click', function () {
-                    localStorage.removeItem('discordToken'); // Eliminar el token
-                    window.location.href = window.location.origin; // Recargar la página
-                });
-            })
-            .catch(error => {
-                console.error('Error al obtener los datos del usuario:', error);
-            });
+            }
         }
-    }
-
-    // Llamada a la función al cargar la página
-    window.onload = getDiscordUser;
-
-    // Función para manejar el clic en el botón "Servicios"
-    serviceBtn.addEventListener('click', function () {
-        // Mostrar los elementos de la sección de "Servicios"
-        whiteBoxRight.style.visibility = 'visible';
-        whiteBoxRight2.style.visibility = 'visible';
-        buyBoxGreen.style.visibility = 'visible';
-        buyBoxGreenRight.style.visibility = 'visible';
-        buyBoxGreenRight2.style.visibility = 'visible';
-        buyBoxGreenBottom.style.visibility = 'visible';
-
-        // Ocultar el cuadro mostaza sin afectar el flujo
-        mustardBox.style.display = 'none';
-    });
-
-    // Función para manejar el clic en el botón "Cuenta"
-    coinsBtn.addEventListener('click', function () {
-        // Mostrar solo el cuadro mostaza
-        mustardBox.style.display = 'block';
-
-        // Ocultar todos los cuadros blancos y los botones de compra sin afectar su posición
-        whiteBox.style.visibility = 'hidden';
-        whiteBoxRight.style.visibility = 'hidden';
-        whiteBoxRight2.style.visibility = 'hidden';
-        buyBoxGreen.style.visibility = 'hidden';
-        buyBoxGreenRight.style.visibility = 'hidden';
-        buyBoxGreenRight2.style.visibility = 'hidden';
-        buyBoxGreenBottom.style.visibility = 'hidden';
-    });
-</script>
+    
+        // Llamada a la función al cargar la página
+        window.onload = getDiscordUser;
+    
+        // Función para manejar el clic en el botón "Servicios"
+        serviceBtn.addEventListener('click', function () {
+            // Mostrar los elementos de la sección de "Servicios"
+            whiteBoxRight.style.visibility = 'visible';
+            whiteBoxRight2.style.visibility = 'visible';
+            buyBoxGreen.style.visibility = 'visible';
+            buyBoxGreenRight.style.visibility = 'visible';
+            buyBoxGreenRight2.style.visibility = 'visible';
+            buyBoxGreenBottom.style.visibility = 'visible';
+    
+            // Ocultar el cuadro mostaza sin afectar el flujo
+            mustardBox.style.display = 'none';
+        });
+    
+        // Función para manejar el clic en el botón "Cuenta"
+        coinsBtn.addEventListener('click', function () {
+            // Mostrar solo el cuadro mostaza
+            mustardBox.style.display = 'block';
+    
+            // Ocultar todos los cuadros blancos y los botones de compra sin afectar su posición
+            whiteBox.style.visibility = 'hidden';
+            whiteBoxRight.style.visibility = 'hidden';
+            whiteBoxRight2.style.visibility = 'hidden';
+            buyBoxGreen.style.visibility = 'hidden';
+            buyBoxGreenRight.style.visibility = 'hidden';
+            buyBoxGreenRight2.style.visibility = 'hidden';
+            buyBoxGreenBottom.style.visibility = 'hidden';
+        });
+    </script>
 </body>
 </html>
