@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store Mj</title>
     <style>
-        body {
+      body {
             margin: 0;
             min-height: 100vh;
             display: flex;
@@ -118,9 +118,15 @@
         }
 
         /* Cuadro blanco que aparecerá debajo de la imagen central */
-        .white-box {
+        .white-box-container {
             margin-top: 200px;
-            margin-left: -300px;
+            margin-left: 300px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+
+        .white-box {
             padding: 20px;
             background-color: white;
             color: black;
@@ -135,7 +141,6 @@
             align-items: center;
         }
 
-        /* Imagen encima del texto en el cuadro blanco */
         .white-box img {
             width: 100px;
             height: auto;
@@ -143,8 +148,8 @@
         }
 
         /* Cuadro verde debajo del texto "COMPRAR" */
-        .buy-box {
-            margin-top: 20px;
+        .buy-box-green {
+            margin-top: 40px;
             padding: 15px;
             background-color: #28a745;
             color: white;
@@ -157,7 +162,7 @@
             text-decoration: none;
         }
 
-        .buy-box:hover {
+        .buy-box-green:hover {
             background-color: #218838;
         }
 
@@ -175,33 +180,22 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             width: 400px;
-            display: none; /* Oculto por defecto */
+            display: none;
             z-index: 3;
         }
 
-        /* Segundo cuadro mostaza */
-        .second-mustard-box {
-            position: absolute;
-            top: 200px;
-            left: 40%;
-            transform: translateX(-50%);
-            padding: 30px;
-            background-color: #d8b56f;
-            color: black;
+        /* Estilo para la sección del usuario */
+        .user-info {
             font-size: 18px;
+            color: black;
             text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            width: 400px;
-            display: none; /* Oculto por defecto */
-            z-index: 3;
         }
 
         /* Botón de iniciar sesión */
         .login-btn {
             position: absolute;
-            top: 30px; /* Mueve el botón hacia la parte superior */
-            right: 30px; /* Mueve el botón hacia la parte derecha */
+            top: 30px;
+            right: 30px;
             padding: 10px 20px;
             background-color: #d8b56f;
             color: white;
@@ -217,11 +211,124 @@
             background-color: #d8b56f;
         }
 
-        /* Estilo para la sección del usuario */
-        .user-info {
-            font-size: 18px;
+        /* Nuevo cuadro blanco a la derecha */
+        .white-box-right {
+            padding: 20px;
+            background-color: white;
             color: black;
+            font-size: 18px;
             text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .white-box-right img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .buy-box-green-right {
+            margin-top: 40px;
+            padding: 15px;
+            background-color: #ff0000;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .buy-box-green-right:hover {
+            background-color: #ff0000;
+        }
+
+        /* Nuevo cuadro blanco a la derecha del segundo */
+        .white-box-right-2 {
+            padding: 20px;
+            background-color: white;
+            color: black;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .white-box-right-2 img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .buy-box-green-right-2 {
+            margin-top: 40px;
+            padding: 15px;
+            background-color: #2200ff;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .buy-box-green-right-2:hover {
+            background-color: #2200ff;
+        }
+
+        /* Nuevo cuadro blanco al final */
+        .white-box-bottom {
+            padding: 20px;
+            background-color: white;
+            color: black;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .white-box-bottom img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .buy-box-green-bottom {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #ff6a00;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .buy-box-green-bottom:hover {
+            background-color: #e67e22;
         }
     </style>
     <link href="https://fonts.cdnfonts.com/css/gagalin" rel="stylesheet">
@@ -240,18 +347,37 @@
             <div class="store-text">SERVICIOS</div>
         </a>
     </div>
-    <div class="white-box" id="white-box">
-        <img src="https://i.imgur.com/DTQxbVN.png" alt="Imagen sobre el texto">
-        <div>¡Spotify! 3 meses por 35 soles.</div>
-        <a href="https://www.paypal.com/ncp/payment/22F2FLHEZNR6E" class="buy-box" target="_blank">COMPRAR</a>
-    </div>
+
     <div class="coins-container" id="coins-btn">
         <img src="https://i.imgur.com/xO9X32e.png" alt="Ícono de MJ Coins">
         <div class="coins-text">Cuenta</div>
     </div>
 
     <!-- Botón de iniciar sesión -->
-    <a href="https://discord.com/login" class="login-btn" target="_blank">INICIAR SESIÓN</a>
+    <a href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token&scope=identify" class="login-btn" id="login-btn" target="_blank">INICIAR SESIÓN</a>
+
+    <!-- Cuadros blancos en contenedor -->
+    <div class="white-box-container" id="white-box-container">
+        <div class="white-box" id="white-box">
+            <img src="https://i.imgur.com/DTQxbVN.png" alt="Imagen sobre el texto">
+            <div>¡Spotify! 3 meses por 35 soles.</div>
+            <a href="https://www.paypal.com/ncp/payment/22F2FLHEZNR6E" class="buy-box-green" target="_blank">COMPRAR</a>
+        </div>
+
+                <!-- Nuevo cuadro blanco a la derecha -->
+        <div class="white-box-right" id="white-box-right">
+            <img src="https://img.irroba.com.br/filters:fill(fff):quality(80)/estampar/catalog/painel-redondo-2023/painel-2024/painel-redondo-netflix.jpg" alt="Imagen sobre el texto">
+            <div>¡NETFLIX! 1 MES POR 20 SOLES.</div>
+            <a href="https://www.paypal.com/ncp/payment/WV34HMJ2D5BES" class="buy-box-green-right" target="_blank">COMPRAR</a>
+        </div>
+
+        <!-- Nuevo cuadro blanco a la derecha del segundo -->
+        <div class="white-box-right-2" id="white-box-right-2">
+            <img src="https://i.pinimg.com/originals/d2/64/3a/d2643ac76db3e1f3fd09fea9ef8eae00.png" alt="Imagen sobre el texto">
+            <div>¡HBO MAX! 1 MES POR 15 SOLES.</div>
+            <a href="https://www.paypal.com/ncp/payment/QCPEQ7EA34DNS" class="buy-box-green-right-2" target="_blank">COMPRAR</a>
+        </div>
+    </div>
 
     <!-- Cuadro mostaza -->
     <div class="mustard-box" id="mustard-box">
@@ -261,37 +387,68 @@
         </div>
     </div>
 
-    <!-- Segundo cuadro mostaza -->
-    <div class="second-mustard-box" id="second-mustard-box">
-        <!-- Aquí se mostrará la información del usuario después del inicio de sesión -->
+    <!-- Nuevo cuadro blanco abajo -->
+    <div class="white-box-bottom" id="white-box-bottom">
+        <img src="https://mlpnk72yciwc.i.optimole.com/cqhiHLc.WqA8~2eefa/w:auto/h:auto/q:75/https://bleedingcool.com/wp-content/uploads/2020/07/crunchyroll-logo-vertical-lg.jpg" alt="Icono adicional">
+        <div>¡CrunchyRoll! Ha tan solo 12 soles.</div>
+        <a href="https://www.paypal.com/ncp/payment/6L9M2ZYWV33U8" class="buy-box-green-bottom" target="_blank">COMPRAR</a>
+    </div>
+
+    <!-- Cuadro mostaza -->
+    <div class="mustard-box" id="mustard-box">
+        TODA LA INFORMACION DE TU CUENTA AQUI 👇
+        <div id="user-info" class="user-info">
+            <!-- Información de usuario aquí -->
+        </div>
     </div>
 
     <script>
+        // Funciones para mostrar y ocultar los cuadros
         const centerImage = document.getElementById('center-image');
-        const whiteBox = document.getElementById('white-box');
+        const whiteBoxContainer = document.getElementById('white-box-container');
         const serviceBtn = document.getElementById('service-btn');
         const coinsBtn = document.getElementById('coins-btn');
         const mustardBox = document.getElementById('mustard-box');
-        const secondMustardBox = document.getElementById('second-mustard-box');
-        const userInfoDiv = document.getElementById('user-info');
+        const whiteBoxBottom = document.getElementById('white-box-bottom'); // Último cuadro añadido
+        const loginBtn = document.getElementById('login-btn');
 
         coinsBtn.addEventListener('click', function () {
             centerImage.style.display = 'none';
-            whiteBox.style.display = 'none';
+            whiteBoxContainer.style.display = 'none'; // Oculta todos los cuadros blancos
             mustardBox.style.display = 'block';
-            secondMustardBox.style.display = 'block';
+            whiteBoxBottom.style.display = 'none'; // Oculta el último cuadro añadido
         });
 
         serviceBtn.addEventListener('click', function () {
             centerImage.style.display = 'block';
-            whiteBox.style.display = 'flex';
+            whiteBoxContainer.style.display = 'flex'; // Muestra los cuadros blancos
             mustardBox.style.display = 'none';
-            secondMustardBox.style.display = 'none';
+            whiteBoxBottom.style.display = 'block'; // Muestra el cuadro blanco abajo
         });
 
-        // Aquí se puede agregar la lógica para mostrar la información del usuario después de iniciar sesión
-        // Por ejemplo, una vez que el usuario inicia sesión con Discord, puedes obtener su información
-        // y mostrarla en la sección correspondiente.
+        // Función para obtener el token de Discord y el avatar
+        function getDiscordUser() {
+            const urlParams = new URLSearchParams(window.location.hash.substring(1));
+            const accessToken = urlParams.get('access_token');
+
+            if (accessToken) {
+                // Realiza la solicitud a la API de Discord para obtener el avatar
+                fetch('https://discord.com/api/v10/users/@me', {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const avatarUrl = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+                    loginBtn.innerHTML = `<img src="${avatarUrl}" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%;">`;
+                })
+                .catch(error => console.error('Error al obtener el usuario de Discord:', error));
+            }
+        }
+
+        // Llamada a la función al cargar la página
+        window.onload = getDiscordUser;
     </script>
 </body>
 </html>
