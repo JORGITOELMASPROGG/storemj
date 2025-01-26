@@ -468,32 +468,47 @@
     // Llamada a la función al cargar la página
     window.onload = getDiscordUser;
 
-    // Función para manejar el clic en el botón "Servicios"
-    serviceBtn.addEventListener('click', function () {
-        // Mostrar los elementos de la sección de "Servicios" y ocultar la caja de cuenta
-        whiteBoxRight.style.visibility = 'visible';
-        whiteBoxRight2.style.visibility = 'visible';
-        buyBoxGreen.style.visibility = 'visible';
-        buyBoxGreenRight.style.visibility = 'visible';
-        buyBoxGreenRight2.style.visibility = 'visible';
-        buyBoxGreenBottom.style.visibility = 'visible';
-
-        mustardBox.style.display = 'none'; // Ocultar la caja de cuenta
-    });
-
     // Función para manejar el clic en el botón "Cuenta"
-    coinsBtn.addEventListener('click', function () {
-        // Mostrar solo la caja de cuenta y ocultar otros cuadros
+coinsBtn.addEventListener('click', function () {
+    // Oculta la imagen y muestra solo el cuadro de cuenta
+    centerImage.style.display = 'none';
+    whiteBoxContainer.style.visibility = 'hidden';
+    mustardBox.style.display = 'none';
+    whiteBoxBottom.style.visibility = 'hidden';
+
+    // Si ya existe el cuadro de cuenta, no lo volvemos a crear
+    if (!document.getElementById('user-account-box')) {
+        const userAccountBox = document.createElement('div');
+        userAccountBox.id = 'user-account-box';
+        userAccountBox.innerHTML = `
+            <div style="font-size: 16px; font-weight: bold; color: #333;">¡CUENTA CONECTADA!</div>
+            <div style="color: #333;">USUARIO: <span id="user-name">Cargando...</span></div>
+            <div style="color: #333;">ID: <span id="user-id">Cargando...</span></div>
+            <div style="color: #333;">CORREO: <span id="user-email">Cargando...</span></div>
+            <div id="user-avatar" style="display: flex; justify-content: flex-end; margin-top: 10px;">
+                <img id="avatar-img" src="" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%;"></div>
+        `;
+        mustardBox.appendChild(userAccountBox);
+    } else {
+        // Si el cuadro ya existe, solo mostramos la caja mostaza
         mustardBox.style.display = 'block';
-        whiteBoxContainer.style.visibility = 'hidden';
-        whiteBox.style.visibility = 'hidden';
-        whiteBoxRight.style.visibility = 'hidden';
-        whiteBoxRight2.style.visibility = 'hidden';
-        buyBoxGreen.style.visibility = 'hidden';
-        buyBoxGreenRight.style.visibility = 'hidden';
-        buyBoxGreenRight2.style.visibility = 'hidden';
-        buyBoxGreenBottom.style.visibility = 'hidden';
-    });
+    }
+});
+
+// Función para manejar el clic en el botón "Servicios"
+serviceBtn.addEventListener('click', function () {
+    // Mostrar los elementos de la sección de "Servicios" y ocultar la caja de cuenta
+    whiteBoxRight.style.visibility = 'visible';
+    whiteBoxRight2.style.visibility = 'visible';
+    buyBoxGreen.style.visibility = 'visible';
+    buyBoxGreenRight.style.visibility = 'visible';
+    buyBoxGreenRight2.style.visibility = 'visible';
+    buyBoxGreenBottom.style.visibility = 'visible';
+
+    // Ocultar la caja de cuenta
+    mustardBox.style.display = 'none';
+    whiteBoxContainer.style.visibility = 'visible';
+});
 </script>
 </body>
 </html>
