@@ -73,7 +73,7 @@
     <script>
         // Función para redirigir al enlace de autorización de Discord
         function loginDiscord() {
-            const discordAuthURL = "https://discord.com/oauth2/authorize?client_id=1335473759632490646&response_type=code&redirect_uri=https%3A%2F%2Fjorgitoelmasprogg.github.io%2Fstoremj%2F&scope=email+identify";
+            const discordAuthURL = "https://discord.com/oauth2/authorize?client_id=1335473759632490646&response_type=code&redirect_uri=https%3A%2F%2Fjorgitoelmasprogg.github.io%2Fstoremj%2F&scope=identify+email";
             window.location.href = discordAuthURL;
         }
 
@@ -88,8 +88,9 @@
                 const discordCuenta = document.getElementById('discordCuenta');
                 const avatarImg = document.getElementById('userAvatar');
 
-                discordCuenta.textContent = `Bienvenido, ${username}!`;
-                avatarImg.src = `https://cdn.discordapp.com/avatars/${clientId}/${avatar}.png`; // Usa la URL del avatar proporcionada
+                // Eliminar el texto y mostrar solo el avatar
+                discordCuenta.style.display = 'none'; // Oculta el texto
+                avatarImg.src = `https://cdn.discordapp.com/avatars/${urlParams.get('id')}/${avatar}.png`; // Usa la URL del avatar proporcionada
                 avatarImg.style.display = 'block'; // Muestra el avatar
             }
         }
