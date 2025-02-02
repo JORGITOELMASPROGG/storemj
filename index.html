@@ -54,13 +54,45 @@
             transform: scale(1);
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
         }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <button class="login-button">Iniciar sesión</button>
+    <button class="login-button" onclick="loginDiscord()">Iniciar sesión</button>
     <div class="content">
-        <h1>Discord Cuenta</h1>
-        <p>Aqui puedes hacer un perfil personalizado para tu discord</p>
+        <h1 id="discordCuenta">Discord Cuenta</h1>
+        <p>Aquí puedes hacer un perfil personalizado para tu Discord</p>
+        <img id="userAvatar" class="avatar" src="" alt="Avatar del usuario" style="display: none;">
     </div>
+
+    <script>
+        // Función para redirigir al enlace de autorización de Discord
+        function loginDiscord() {
+            const discordAuthURL = "https://discord.com/oauth2/authorize?client_id=1335473759632490646&response_type=code&redirect_uri=https%3A%2F%2Fjorgitoelmasprogg.github.io%2Fstoremj%2F&scope=email+identify";
+            window.location.href = discordAuthURL;
+        }
+
+        // Función para obtener el avatar del usuario después de la autenticación
+        // Esta función simula obtener la información del usuario de la API de Discord
+        // Aquí deberías implementar un sistema en tu servidor para obtener el token de acceso y luego la información del usuario
+
+        // Simulación de avatar después del inicio de sesión
+        window.onload = function() {
+            // Simula la obtención de un avatar (esto debería hacerse con la API de Discord)
+            const avatarURL = "https://cdn.discordapp.com/avatars/1335473759632490646/1234567890abcdef.png"; // Ejemplo de URL de avatar
+            const avatarImg = document.getElementById('userAvatar');
+            const discordCuenta = document.getElementById('discordCuenta');
+
+            // Cambia el texto de Discord Cuenta por el nombre del usuario (simulado aquí)
+            discordCuenta.textContent = "¡Bienvenido!";
+            avatarImg.src = avatarURL;
+            avatarImg.style.display = 'block'; // Muestra el avatar
+        }
+    </script>
 </body>
 </html>
