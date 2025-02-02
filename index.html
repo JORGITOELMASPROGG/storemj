@@ -63,7 +63,7 @@
     </style>
 </head>
 <body>
-    <button class="login-button" onclick="loginDiscord()">Iniciar sesión</button>
+    <button class="login-button" onclick="loginDiscord()">Iniciar sesión con Discord</button>
     <div class="content">
         <h1 id="discordCuenta">Discord Cuenta</h1>
         <p>Aquí puedes hacer un perfil personalizado para tu Discord</p>
@@ -73,39 +73,31 @@
     <script>
         // Función para redirigir al enlace de autorización de Discord
         function loginDiscord() {
-            const discordAuthURL = "https://discord.com/oauth2/authorize?client_id=1335473759632490646&response_type=code&redirect_uri=https%3A%2F%2Fjorgitoelmasprogg.github.io%2Fstoremj%2F&scope=identify+email";
+            const discordAuthURL = "https://discord.com/oauth2/authorize?client_id=1335473759632490646&response_type=code&redirect_uri=https%3A%2F%2Ftu-dominio.com%2Fcallback&scope=identify+email";
             window.location.href = discordAuthURL;
         }
 
         // Función para obtener los parámetros de la URL después de la redirección
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code'); // Obtenemos el 'code' enviado por Discord
-
+            const code = urlParams.get('code');
+            
+            // Si hay un código, realiza la solicitud al backend
             if (code) {
-                // Enviar el 'code' al servidor para obtener el 'access_token'
-                fetch('/get-discord-user-data', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ code: code }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.avatar && data.username) {
-                        // Cambiar el contenido con los datos del usuario
+                fetch(`/auth/discord?code=${code}`)
+                    .then(response => response.json())
+                    .then(data => {
                         const discordCuenta = document.getElementById('discordCuenta');
                         const avatarImg = document.getElementById('userAvatar');
-
-                        discordCuenta.style.display = 'none'; // Oculta el texto
-                        avatarImg.src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`; // Usa la URL del avatar
-                        avatarImg.style.display = 'block'; // Muestra el avatar
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al obtener datos de Discord:', error);
-                });
+                        
+                        // Mostrar el nombre de usuario y avatar
+                        discordCuenta.innerText = `Bienvenido, ${data.username}`;
+                        avatarImg.src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+                        avatarImg.style.display = 'block'; // Mostrar el avatar
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             }
         }
     </script>
