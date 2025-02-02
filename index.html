@@ -1,532 +1,66 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store Mj</title>
+    <title>Página con Fondo Rojo Difuminado</title>
     <style>
-      body {
+        body {
             margin: 0;
-            min-height: 100vh;
+            padding: 0;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
             color: white;
-            font-family: 'Gagalin', sans-serif;
-            overflow-y: auto;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.9) 20%, rgba(100, 0, 0, 0.8) 80%);
         }
-
-        /* Fondo de video */
-        video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        /* Logo en la parte izquierda */
-        .logo-left {
-            position: absolute;
-            top: 30px;
-            left: 40px;
-            z-index: 1;
-        }
-        .logo-left img {
-            width: 200px;
-            height: auto;
-        }
-
-        /* Imagen en el centro superior */
-        .center-image {
-            position: absolute;
-            top: 50px;
-            left: 55%;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-        .center-image img {
-            width: 250px;
-            height: auto;
-        }
-
-        /* Rectángulo mostaza a la izquierda */
-        .mustard-rectangle {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .content {
             width: 300px;
-            height: 800px;
-            background-color: #d8b56f;
-            z-index: 0;
-            border-top-right-radius: 30px;
-            border-bottom-right-radius: 30px;
+            height: 300px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            padding: 60px 30px 0px;
-        }
-
-        /* Imagen y texto "SERVICIOS" alineados */
-        .service-container {
-            display: flex;
+            justify-content: center;
             align-items: center;
-            margin-top: 120px;
-            margin-left: -10px;
-            cursor: pointer;
-            text-decoration: none;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease-in-out;
         }
-
-        .service-icon {
-            width: 30px;
-            height: auto;
-            margin-right: 10px;
+        .content:hover {
+            transform: scale(1.1);
         }
-
-        .store-text {
-            font-size: 20px;
-            color: white;
-            text-shadow: 0 0 10px rgba(199, 156, 17, 0.7);
-            white-space: nowrap;
-        }
-
-        /* Contenedor "Cuenta" con ícono */
-        .coins-container {
-            display: flex;
-            align-items: center;
+        .login-button {
             position: absolute;
-            top: 220px;
-            left: 20px;
-            z-index: 1;
-            cursor: pointer;
-        }
-
-        .coins-container img {
-            width: 30px;
-            height: auto;
-            margin-right: 10px;
-        }
-
-        .coins-text {
-            font-size: 20px;
-            color: white;
-            text-shadow: 0 0 10px rgba(199, 156, 17, 0.7);
-        }
-
-        /* Cuadro blanco que aparecerá debajo de la imagen central */
-        .white-box-container {
-            margin-top: 200px;
-            margin-left: 300px;
-            display: flex;
-            justify-content: flex-start;
-            gap: 20px;
-        }
-
-        .white-box {
-            padding: 20px;
-            background-color: white;
-            color: black;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .white-box img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        /* Cuadro verde debajo del texto "COMPRAR" */
-        .buy-box-green {
-            margin-top: 40px;
-            padding: 15px;
-            background-color: #28a745;
-            color: white;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
-            width: 100%;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-        }
-
-        .buy-box-green:hover {
-            background-color: #218838;
-        }
-
-        /* Cuadro mostaza que aparece al hacer clic en "Cuenta" */
-        .mustard-box {
-            position: absolute;
-            top: 80px;
-            left: 40%;
-            transform: translateX(-50%);
-            padding: 30px;
-            background-color: #d8b56f;
-            color: black;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            width: 400px;
-            display: none;
-            z-index: 3;
-        }
-
-        /* Estilo para la sección del usuario */
-        .user-info {
-            font-size: 18px;
-            color: black;
-            text-align: center;
-        }
-
-        /* Botón de iniciar sesión */
-        .login-btn {
-            position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             padding: 10px 20px;
-            background-color: #d8b56f;
+            background-color: rgba(0, 0, 0, 0.6);
             color: white;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
+            transition: all 0.3s ease;
         }
-
-        .login-btn:hover {
-            background-color: #d8b56f;
+        .login-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
         }
-
-        /* Nuevo cuadro blanco a la derecha */
-        .white-box-right {
-            padding: 20px;
-            background-color: white;
-            color: black;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .white-box-right img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .buy-box-green-right {
-            margin-top: 40px;
-            padding: 15px;
-            background-color: #ff0000;
-            color: white;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
-            width: 100%;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-        }
-
-        .buy-box-green-right:hover {
-            background-color: #ff0000;
-        }
-
-        /* Nuevo cuadro blanco a la derecha del segundo */
-        .white-box-right-2 {
-            padding: 20px;
-            background-color: white;
-            color: black;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .white-box-right-2 img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .buy-box-green-right-2 {
-            margin-top: 40px;
-            padding: 15px;
-            background-color: #2200ff;
-            color: white;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
-            width: 100%;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-        }
-
-        .buy-box-green-right-2:hover {
-            background-color: #2200ff;
-        }
-
-        /* Nuevo cuadro blanco al final */
-        .white-box-bottom {
-            padding: 20px;
-            background-color: white;
-            color: black;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .white-box-bottom img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .buy-box-green-bottom {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #ff6a00;
-            color: white;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
-            width: 100%;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-        }
-
-        .buy-box-green-bottom:hover {
-            background-color: #e67e22;
+        .login-button:active {
+            transform: scale(1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
         }
     </style>
-    <link href="https://fonts.cdnfonts.com/css/gagalin" rel="stylesheet">
 </head>
 <body>
-    <video autoplay loop muted>
-        <source src="https://i.imgur.com/4w6PpSz.mp4" type="video/mp4">
-    </video>
-
-    <!-- Logo, rectángulos e información -->
-    <div class="logo-left"><img src="https://i.imgur.com/KUhw9mM.png" alt="Logo"></div>
-    <div class="center-image" id="center-image"><img src="https://i.imgur.com/N7k9Djp.png" alt="Imagen central"></div>
-    <div class="mustard-rectangle">
-        <a href="#" class="service-container" id="service-btn">
-            <img src="https://i.imgur.com/6thHGBs.png" alt="Icono servicios" class="service-icon">
-            <div class="store-text">SERVICIOS</div>
-        </a>
+    <button class="login-button">Iniciar sesión</button>
+    <div class="content">
+        <h1>Discord Cuenta</h1>
+        <p>Aqui puedes hacer un perfil personalizado para tu discord</p>
     </div>
-
-    <div class="coins-container" id="coins-btn">
-        <img src="https://i.imgur.com/xO9X32e.png" alt="Ícono de MJ Coins">
-        <div class="coins-text">Cuenta</div>
-    </div>
-
-    <!-- Botón de iniciar sesión -->
-    <a href="https://discord.com/oauth2/authorize?client_id=1321889545167442044&redirect_uri=https://jorgitoelmasprogg.github.io/storemj/&response_type=token&scope=identify" class="login-btn" id="login-btn" target="_blank">INICIAR SESIÓN</a>
-
-    <!-- Cuadros blancos en contenedor -->
-    <div class="white-box-container" id="white-box-container">
-        <div class="white-box" id="white-box">
-            <img src="https://i.imgur.com/DTQxbVN.png" alt="Imagen sobre el texto">
-            <div>¡Spotify! 3 meses por 35 soles.</div>
-            <a href="https://www.paypal.com/ncp/payment/22F2FLHEZNR6E" class="buy-box-green" target="_blank">COMPRAR</a>
-        </div>
-
-        <!-- Nuevo cuadro blanco a la derecha -->
-        <div class="white-box-right" id="white-box-right">
-            <img src="https://img.irroba.com.br/filters:fill(fff):quality(80)/estampar/catalog/painel-redondo-2023/painel-2024/painel-redondo-netflix.jpg" alt="Imagen sobre el texto">
-            <div>¡NETFLIX! 1 MES POR 20 SOLES.</div>
-            <a href="https://www.paypal.com/ncp/payment/WV34HMJ2D5BES" class="buy-box-green-right" target="_blank">COMPRAR</a>
-        </div>
-
-        <!-- Nuevo cuadro blanco a la derecha del segundo -->
-        <div class="white-box-right-2" id="white-box-right-2">
-            <img src="https://i.pinimg.com/originals/d2/64/3a/d2643ac76db3e1f3fd09fea9ef8eae00.png" alt="Imagen sobre el texto">
-            <div>¡HOST!</div>
-            <a href="https://www.paypal.com/ncp/payment/8FX6HMA72W4D2" target="_blank">COMPRAR</a>
-        </div>
-    </div>
-
-    <!-- Cuadro mostaza -->
-    <div class="mustard-box" id="mustard-box">
-        PROXIMAMENTE
-        <div id="user-info" class="user-info">
-            <!-- Información de usuario aquí -->
-        </div>
-    </div>
-
-    <!-- Nuevo cuadro blanco abajo -->
-    <div class="white-box-bottom" id="white-box-bottom">
-        <img src="https://mlpnk72yciwc.i.optimole.com/cqhiHLc.WqA8~2eefa/w:auto/h:auto/q:75/https://bleedingcool.com/wp-content/uploads/2020/07/crunchyroll-logo-vertical-lg.jpg" alt="Icono adicional">
-        <div>¡CrunchyRoll! Ha tan solo 12 soles.</div>
-        <a href="https://www.paypal.com/ncp/payment/6L9M2ZYWV33U8" class="buy-box-green-bottom" target="_blank">COMPRAR</a>
-    </div>
-    
-    <script>
-        // Referencias a los elementos
-        const centerImage = document.getElementById('center-image');
-        const whiteBoxContainer = document.getElementById('white-box-container');
-        const serviceBtn = document.getElementById('service-btn');
-        const coinsBtn = document.getElementById('coins-btn');
-        const mustardBox = document.getElementById('mustard-box');
-        const whiteBoxBottom = document.getElementById('white-box-bottom'); // Último cuadro añadido
-        const loginBtn = document.getElementById('login-btn');
-        const userInfo = document.getElementById('user-info');
-        const whiteBoxRight = document.getElementById('white-box-right');
-        const whiteBoxRight2 = document.getElementById('white-box-right-2');
-        const whiteBox = document.getElementById('white-box');
-        const buyBoxGreen = document.querySelector('.buy-box-green');
-        const buyBoxGreenRight = document.querySelector('.buy-box-green-right');
-        const buyBoxGreenRight2 = document.querySelector('.buy-box-green-right-2');
-        const buyBoxGreenBottom = document.querySelector('.buy-box-green-bottom');
-    
-        // Función para manejar el clic en el botón "Cuenta"
-        coinsBtn.addEventListener('click', function () {
-            centerImage.style.display = 'none'; // Oculta el centro de la imagen
-            whiteBoxContainer.style.display = 'none'; // Oculta todos los cuadros blancos
-            mustardBox.style.display = 'block'; // Muestra el cuadro mostaza
-            whiteBoxBottom.style.display = 'none'; // Oculta el cuadro blanco inferior
-            // Oculta los cuadros de "Servicios"
-            whiteBox.style.display = 'none';
-            whiteBoxRight.style.display = 'none';
-            whiteBoxRight2.style.display = 'none';
-            buyBoxGreen.style.display = 'none';
-            buyBoxGreenRight.style.display = 'none';
-            buyBoxGreenRight2.style.display = 'none';
-            buyBoxGreenBottom.style.display = 'none';
-        });
-    
-        // Función para manejar el clic en el botón "Servicios"
-        serviceBtn.addEventListener('click', function () {
-            centerImage.style.display = 'block'; // Muestra el centro de la imagen
-            whiteBoxContainer.style.display = 'flex'; // Muestra los cuadros blancos
-            mustardBox.style.display = 'none'; // Oculta el cuadro mostaza
-            whiteBoxBottom.style.display = 'block'; // Muestra el cuadro blanco inferior
-            // Muestra los cuadros de "Servicios" sin afectar el diseño de los botones
-            whiteBox.style.display = 'block';
-            whiteBoxRight.style.display = 'block';
-            whiteBoxRight2.style.display = 'block';
-            buyBoxGreen.style.display = 'block';
-            buyBoxGreenRight.style.display = 'block';
-            buyBoxGreenRight2.style.display = 'block';
-            buyBoxGreenBottom.style.display = 'block';
-        });
-    
-        // Función para obtener el token de Discord y el avatar
-        function getDiscordUser() {
-            const urlParams = new URLSearchParams(window.location.hash.substring(1));
-            const accessToken = urlParams.get('access_token');
-    
-            if (accessToken) {
-                // Realiza la solicitud a la API de Discord para obtener el avatar
-                fetch('https://discord.com/api/v10/users/@me', {
-                    headers: {
-                        'Authorization': `Bearer ${accessToken}`
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    const avatarUrl = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
-                    loginBtn.innerHTML = `<img src="${avatarUrl}" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%;">`;
-    
-                    // Mostrar el avatar y el nombre de usuario
-                    userInfo.innerHTML = `
-                        <img id="avatar-img" src="${avatarUrl}" alt="Avatar de ${data.username}" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px; cursor: pointer;">
-                        <div id="username-display" style="display: none;">${data.username}</div>
-                        <button id="logout-btn" style="display: none;">Cerrar sesión</button>
-                    `;
-                    mustardBox.style.display = 'block';
-                    whiteBoxContainer.style.display = 'flex';
-    
-                    // Mostrar el contenedor con la información del usuario
-                    userInfo.style.display = 'block';
-    
-                    // Funcionalidad al hacer clic en el avatar
-                    document.getElementById('avatar-img').addEventListener('click', function () {
-                        const usernameDisplay = document.getElementById('username-display');
-                        const logoutBtn = document.getElementById('logout-btn');
-    
-                        // Mostrar el nombre de usuario y el botón de cerrar sesión
-                        usernameDisplay.style.display = 'block';
-                        logoutBtn.style.display = 'block';
-                    });
-    
-                    // Cerrar sesión al hacer clic en el botón
-                    document.getElementById('logout-btn').addEventListener('click', function () {
-                        localStorage.removeItem('discordToken'); // Eliminar el token
-                        window.location.href = window.location.origin; // Recargar la página
-                    });
-                })
-                .catch(error => {
-                    console.error('Error al obtener los datos del usuario:', error);
-                });
-            }
-        }
-    
-        // Llamada a la función al cargar la página
-        window.onload = getDiscordUser;
-    
-        // Función para manejar el clic en el botón "Servicios"
-        serviceBtn.addEventListener('click', function () {
-            // Mostrar los elementos de la sección de "Servicios"
-            whiteBoxRight.style.display = 'block';
-            whiteBoxRight2.style.display = 'block';
-            buyBoxGreen.style.display = 'block';
-            buyBoxGreenRight.style.display = 'block';
-            buyBoxGreenRight2.style.display = 'block';
-            buyBoxGreenBottom.style.display = 'block';
-    
-            // Ocultar el cuadro mostaza
-            mustardBox.style.display = 'none';
-        });
-    
-        // Función para manejar el clic en el botón "Cuenta"
-        coinsBtn.addEventListener('click', function () {
-            // Mostrar solo el cuadro mostaza
-            mustardBox.style.display = 'block';
-    
-            // Ocultar todos los cuadros blancos y los botones de compra
-            whiteBox.style.display = 'none';
-            whiteBoxRight.style.display = 'none';
-            whiteBoxRight2.style.display = 'none';
-            buyBoxGreen.style.display = 'none';
-            buyBoxGreenRight.style.display = 'none';
-            buyBoxGreenRight2.style.display = 'none';
-            buyBoxGreenBottom.style.display = 'none';
-        });
-    </script>
-
 </body>
 </html>
