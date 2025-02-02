@@ -77,21 +77,21 @@
             window.location.href = discordAuthURL;
         }
 
-        // Función para obtener el avatar del usuario después de la autenticación
-        // Esta función simula obtener la información del usuario de la API de Discord
-        // Aquí deberías implementar un sistema en tu servidor para obtener el token de acceso y luego la información del usuario
-
-        // Simulación de avatar después del inicio de sesión
+        // Función para obtener los parámetros de la URL después de la redirección
         window.onload = function() {
-            // Simula la obtención de un avatar (esto debería hacerse con la API de Discord)
-            const avatarURL = "https://cdn.discordapp.com/avatars/1335473759632490646/1234567890abcdef.png"; // Ejemplo de URL de avatar
-            const avatarImg = document.getElementById('userAvatar');
-            const discordCuenta = document.getElementById('discordCuenta');
+            const urlParams = new URLSearchParams(window.location.search);
+            const avatar = urlParams.get('avatar');
+            const username = urlParams.get('username');
 
-            // Cambia el texto de Discord Cuenta por el nombre del usuario (simulado aquí)
-            discordCuenta.textContent = "¡Bienvenido!";
-            avatarImg.src = avatarURL;
-            avatarImg.style.display = 'block'; // Muestra el avatar
+            if (avatar && username) {
+                // Cambiar el contenido con los datos del usuario
+                const discordCuenta = document.getElementById('discordCuenta');
+                const avatarImg = document.getElementById('userAvatar');
+
+                discordCuenta.textContent = `Bienvenido, ${username}!`;
+                avatarImg.src = `https://cdn.discordapp.com/avatars/${clientId}/${avatar}.png`; // Usa la URL del avatar proporcionada
+                avatarImg.style.display = 'block'; // Muestra el avatar
+            }
         }
     </script>
 </body>
