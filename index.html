@@ -80,18 +80,32 @@
         // Función para obtener los parámetros de la URL después de la redirección
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const avatar = urlParams.get('avatar');
-            const username = urlParams.get('username');
+            const code = urlParams.get('code'); // Obtenemos el 'code' enviado por Discord
 
-            if (avatar && username) {
-                // Cambiar el contenido con los datos del usuario
-                const discordCuenta = document.getElementById('discordCuenta');
-                const avatarImg = document.getElementById('userAvatar');
+            if (code) {
+                // Enviar el 'code' al servidor para obtener el 'access_token'
+                fetch('/get-discord-user-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ code: code }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.avatar && data.username) {
+                        // Cambiar el contenido con los datos del usuario
+                        const discordCuenta = document.getElementById('discordCuenta');
+                        const avatarImg = document.getElementById('userAvatar');
 
-                // Eliminar el texto y mostrar solo el avatar
-                discordCuenta.style.display = 'none'; // Oculta el texto
-                avatarImg.src = `https://cdn.discordapp.com/avatars/${urlParams.get('id')}/${avatar}.png`; // Usa la URL del avatar proporcionada
-                avatarImg.style.display = 'block'; // Muestra el avatar
+                        discordCuenta.style.display = 'none'; // Oculta el texto
+                        avatarImg.src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`; // Usa la URL del avatar
+                        avatarImg.style.display = 'block'; // Muestra el avatar
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al obtener datos de Discord:', error);
+                });
             }
         }
     </script>
